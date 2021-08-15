@@ -2,13 +2,13 @@
 
 K8s cluster contain types of GPUs and none GPUs
 
-![alt](../images/cluster.png)
+![alt](./images/cluster.png)
 
 ### Requirements
 
 - Kubernetes worker nodes have to installed with NVIDIA drivers, nvidia-docker 2.0.
 
-![alt](../images/nvidia-smi.png)
+![alt](./images/nvidia-smi.png)
 
 - `nvidia-container-runtime` must be configured as the default runtime for Docker. Change default docker runtime on `/etc/docker/daemon.json`.
 
@@ -32,16 +32,16 @@ K8s cluster contain types of GPUs and none GPUs
 kubectl label nodes <node-gpu> app=gpu
 kubectl taint nodes <node-gpu> app=gpu:NoSchedule
 ```
-- Install nvidia-device-plugin on worker nodes gpu
+- Install nvidia-device-plugin on worker nodes GPU
 
 ```
-
+kubectl apply -f https://raw.githubusercontent.com/thangtq710/gpu-k8s/master/files/nvidia-device-plugin.yml
 ```
 
 - Verification. Run deployment test
 
 ```
-
+kubectl apply -f https://raw.githubusercontent.com/thangtq710/gpu-k8s/master/files/deployment-gpu-test.yml
 ```
 
 ### Reference
